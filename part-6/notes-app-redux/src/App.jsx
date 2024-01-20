@@ -1,15 +1,11 @@
-function App() {
+import Notes from "./components/Notes";
+import NewNote from "./components/NewNote";
 
+function App() {
   return (
     <div>
-      <ul>
-        {
-          store.getState().map(note =>
-            <li key={note.id}>
-              {note.content} <strong>{note.important ? "important" : ""}</strong>
-            </li>)
-        }
-      </ul>
+      <NewNote />
+      <Notes />
     </div>
   );
 }
