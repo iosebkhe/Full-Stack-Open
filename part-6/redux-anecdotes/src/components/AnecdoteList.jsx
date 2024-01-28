@@ -4,8 +4,13 @@ import Anecdote from "./Anecdote";
 
 const AnecdoteList = () => {
   const dispatch = useDispatch();
-  const anecdotes = useSelector(state => {
-    return [...state].sort((a, b) => b.votes - a.votes);
+
+  const anecdotes = useSelector(({ filter, anecdotes }) => {
+    const filteredAnecdotes = filter
+      ? [...anecdotes].filter(anecdote => anecdote.content.toLowerCase().includes(filter))
+      : [...anecdotes];
+
+    return filteredAnecdotes.sort((a, b) => b.votes - a.votes);
   });
 
 
